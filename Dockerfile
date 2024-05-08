@@ -11,4 +11,6 @@ RUN pip install streamlit-audiorec
 
 RUN pip install transformers
 
+COPY ./matutils.py /home/adminuser/venv/lib/python3.11/site-packages/gensim/matutils.py
+
 CMD ["python", "app.py"]
