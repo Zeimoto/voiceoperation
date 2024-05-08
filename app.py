@@ -5,7 +5,6 @@ from nameder import init_model_ner, get_entity_labels
 from speech2text import init_model_trans, transcribe
 from translation import translate
 from resources import audit_elapsedtime, set_start
-import subprocess
 
 def main ():
     print("------------------------------")
