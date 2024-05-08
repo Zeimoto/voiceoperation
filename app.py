@@ -1,6 +1,9 @@
 import streamlit as st
 from st_audiorec import st_audiorec
 
+import shutil
+import os
+
 from nameder import init_model_ner, get_entity_labels
 from speech2text import init_model_trans, transcribe
 from translation import translate
@@ -42,7 +45,21 @@ def main ():
 
         st.write(f"Total elapsed time: {int(loading_elapsedtime/60)} minutes and {int(loading_elapsedtime%60)} seconds")
 
+def replace_matutils():
+    original_file = "/home/adminuser/venv/lib/python3.11/site-packages/gensim/matutils.py"
+    new_file = "./matutils.py"
+    
+    # Check if the original file exists
+    if os.path.exists(original_file):
+        # Remove the original file
+        os.remove(original_file)
+        # Copy the new file to the original file's location
+        shutil.copy(new_file, original_file)
+        print(f"File {original_file} replaced successfully.")
+    else:
+        print(f"File {original_file} does not exist.")
 
+        
 if __name__ == "__main__":
-    print("IN __name__")
+    replace_matutils()
     main()
